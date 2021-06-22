@@ -1,0 +1,63 @@
+<table class="table table-striped col-10 off mt-2">
+    <thead>
+      <tr id="pedidosInfo">
+        <th scope="col">Id</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Apellido</th>
+        <th scope="col">E-mail</th>
+        <th scope="col">Fecha de creación</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngIf="cliente">
+        <td>{{cliente.id}}</td>
+        <td>{{cliente.nombre}}</td>
+        <td>{{cliente.apellido}}</td>
+        <td>{{cliente.email}}</td>
+        <td>{{cliente.createdAt}}</td>
+      </tr>
+    </tbody>
+</table>
+<button class="btn btn-primary m-3" [routerLink]="['/clientes']">Atrás</button>
+<button type="button" class="btn btn-success m-3" data-toggle="modal" data-target="#modificar">Modificar</button>
+<div class="modal fade" id="modificar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="infoLabel">Datos del cliente</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form autocomplete="off" (ngSubmit)="modificarDatos()" #forma="ngForm" >
+        <div class="modal-body" *ngIf="cliente">
+          <input class="form-control" 
+                name="nombre" 
+                [(ngModel)]="cliente.nombre" 
+                value="{{cliente.nombre}}" 
+                type="text" 
+                style="width: 250px;"
+                /><br/><!--#Nombre-->
+          <input class="form-control"
+                name="apellido" 
+                [(ngModel)]="cliente.apellido" 
+                value="{{cliente.apellido}}" 
+                type="text" 
+                style="width: 250px;"
+                ><br/>
+          <input class="form-control"
+                name="email" 
+                [(ngModel)]="cliente.email" 
+                value="{{cliente.email}}" 
+                type="text" 
+                style="width: 250px;"
+                /><br/>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Volver</button>
+          <button type="submit" class="btn btn-primary" >Guardar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

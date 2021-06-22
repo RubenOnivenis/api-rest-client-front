@@ -1,0 +1,27 @@
+<table class="table table-striped col-10 off mt-2">
+    <thead>
+      <tr id="pedidosInfo">
+        <th scope="col">Id</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Apellido</th>
+        <th scope="col">E-mail</th>
+        <th scope="col">Fecha de creación</th>
+        <th scope="col">Opciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let cliente of clientes">
+        <td>{{cliente.id}}</td>
+        <td>{{cliente.nombre}}</td>
+        <td>{{cliente.apellido}}</td>
+        <td>{{cliente.email}}</td>
+        <td>{{cliente.createdAt}}</td>
+        <td>
+          <button type="button" class="btn btn-link p-0" routerLink="/detalles/{{cliente.id}}">Detalles</button> |
+          <button type="button" class="btn btn-link p-0" style="color: red;" (click)="borrarCliente(cliente.id)">Borrar</button>
+        </td>
+      </tr>
+    </tbody>
+</table>
+
+  
